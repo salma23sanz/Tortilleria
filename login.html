@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Iniciar Sesión - Tortillería La Tradición</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff1d4;
+    }
+
+    /* Header */
+    header {
+      background-color: hsl(174, 80%, 32%);
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.8em;
+      font-weight: bold;
+    }
+
+    .logo-img {
+      height: 40px;
+      width: 40px;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #fff0d6;
+    }
+
+    /* Contenedor principal */
+    .main-container {
+      display: flex;
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .form-section {
+      flex: 1;
+      padding: 30px;
+    }
+
+    .image-section {
+      flex: 1;
+      background-image: url('tortillas.jpg'); /* Reemplaza con tu imagen */
+      background-size: cover;
+      background-position: center;
+    }
+
+    h2 {
+      text-align: center;
+      color: #6c584c;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #6c584c;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #5a4d3a;
+    }
+
+    .register-link {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .register-link a {
+      color: #6c584c;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .register-link a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .main-container {
+        flex-direction: column;
+      }
+
+      .image-section {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="logo2.png" alt="Logo" class="logo-img">
+      <span>Tortillería La Tradición</span>
+    </div>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="nuestrosproductos.html">Nuestros Productos</a>
+      <a href="login.html">Registro</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <div class="main-container">
+    <!-- Sección del formulario -->
+    <div class="form-section">
+      <h2>Iniciar Sesión</h2>
+      <form action="/login" method="post">
+        <input type="email" name="correo" placeholder="Correo electrónico" required>
+        <input type="password" name="contraseña" placeholder="Contraseña" required>
+        <button type="submit">Entrar</button>
+      </form>
+      <div class="register-link">
+        ¿No tienes cuenta? <a href="tortilleria.html">Regístrate aquí</a>
+      </div>
+    </div>
+
+    <!-- Sección de la imagen -->
+    <div class="image-section"></div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>nuestrosproductos</title>
+
+  <style>
+ body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff1d4;
+    }
+
+    /* Header */
+    header {
+      background-color: hsl(174, 80%, 32%);
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+.logo-img {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+  border-radius: 50%; /* Opcional: hace el ícono redondo */
+}
+nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+      h1 {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5em;
+      padding: 2em;
+    }
+
+    .producto {
+      background-color: #7ca08c;
+      color: white;
+      border-radius: 15px;
+      overflow: hidden;
+      text-align: center;
+      padding: 1em;
+    }
+
+    .producto img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .producto p {
+      margin-top: 0.5em;
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="logo2.png" alt="Logo" class="logo-img">
+      <span>Tortillería La Tradición</span>
+    </div>
+    <nav>
+      <a href="nosotros.html">Inicio</a>
+      <a href="nuestrosproductos.html"> Nuestros Productos</a>
+      <a href="login.html">Registro</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Nuestros Productos</h1>
+    <div class="grid">
+  <a href="productos/tortilla-maiz.html" class="producto">
+    <img src="tor1.jpg" alt="Tortilla Maíz Nixtamalizado" />
+    <p>Tortilla de Maíz Nixtamalizado (500gr)</p>
+  </a>
+  
+  <a href="productos/tortilla-azul.html" class="producto">
+    <img src="tor2.jpg" alt="Tortilla Azul" />
+    <p>Tortilla de Maíz Azul Nixtamalizado (500gr)</p>
+  </a>
+<a href="productos/tortilla-harina.html" class="producto">
+    <img src="tor3.jpg" alt="Tortilla Harina" />
+    <p>Tortillas de Harina de Maíz (500gr)</p>
+  </a>
+  <a href="productos/masa-bolsa.html" class="producto">
+    <img src="mas1.png" alt="Masa Nixtamal Bolsa" />
+    <p>Masa de Maíz Nixtamalizado Bolsa (1Kg)</p>
+  </a>
+
+  <a href="productos/masa-azul.html" class="producto">
+    <img src="mas2.jpg" alt="Masa Azul" />
+    <p>Masa de Maíz Azul Nixtamalizado (1Kg)</p>
+  </a>
+
+  <a href="productos/masa-harina.html" class="producto">
+    <img src="mas3.jpg" alt="Masa Harina" />
+    <p>Masa de Harina de Maíz (1Kg)</p>
+  </a>
+  
+    <a href="productos/masa-bolsa.html" class="producto">
+    <img src="totop1.jpg" alt="Totopos de Masa Nixtamal" />
+    <p>Masa de Maíz Nixtamalizado Bolsa (1Kg)</p>
+  </a>
+
+  <a href="productos/masa-azul.html" class="producto">
+    <img src="totop2.jpg" alt="Totopos de Masa Azul" />
+    <p>Masa de Maíz Azul Nixtamalizado (1Kg)</p>
+  </a>
+
+  <a href="productos/masa-harina.html" class="producto">
+    <img src="toptop3.jpg" alt="Totopos de Masa Harina" />
+    <p>Masa de Harina de Maíz (1Kg)</p>
+  </a>
+</div>
+
+  </main>
+
+</body>
+</html>
