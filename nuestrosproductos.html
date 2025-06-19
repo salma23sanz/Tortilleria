@@ -3,16 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>nuestrosproductos</title>
+  <title>Nuestros Productos</title>
 
   <style>
- body {
+    body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background-color: #fff1d4;
     }
 
-    /* Header */
     header {
       background-color: hsl(174, 80%, 32%);
       color: white;
@@ -24,30 +23,27 @@
     }
 
     .logo {
-  display: flex;
-  align-items: center;
-  font-size: 1.8em;
-  font-weight: bold;
-}
+      display: flex;
+      align-items: center;
+      font-size: 1.8em;
+      font-weight: bold;
+    }
 
-.logo-img {
-  height: 40px;
-  width: 40px;
-  margin-right: 10px;
-  border-radius: 50%; /* Opcional: hace el ícono redondo */
-}
-nav a {
+    .logo-img {
+      height: 40px;
+      width: 40px;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+
+    nav a {
       color: white;
       text-decoration: none;
       margin-left: 20px;
       font-weight: 500;
-      transition: color 0.3s ease;
     }
 
-    .login-link a:hover {
-      text-decoration: underline;
-    }
-      h1 {
+    h1 {
       text-align: center;
       margin-top: 20px;
     }
@@ -78,9 +74,46 @@ nav a {
       font-weight: bold;
     }
 
+    .cantidad-selector {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px 0;
+      gap: 10px;
+    }
+
+    .cantidad-selector button {
+      background-color: white;
+      color: black;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      font-size: 1.2em;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .cantidad-selector span {
+      min-width: 20px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    .agregar-btn {
+      background-color: #004d40;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .agregar-btn:hover {
+      background-color: #00332d;
+    }
   </style>
 </head>
-
 <body>
 
   <header>
@@ -89,61 +122,136 @@ nav a {
       <span>Tortillería La Tradición</span>
     </div>
     <nav>
-      <a href="nosotros.html">Inicio</a>
-      <a href="nuestrosproductos.html"> Nuestros Productos</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="nuestrosproductos.html">Nuestros Productos</a>
       <a href="login.html">Registro</a>
-      <a href="contacto.html">Contacto</a>
+      <a href="carrito.html">Carrito</a>
     </nav>
   </header>
 
   <main>
     <h1>Nuestros Productos</h1>
     <div class="grid">
-  <a href="productos/tortilla-maiz.html" class="producto">
-    <img src="tor1.jpg" alt="Tortilla Maíz Nixtamalizado" />
-    <p>Tortilla de Maíz Nixtamalizado (500gr)</p>
-  </a>
-  
-  <a href="productos/tortilla-azul.html" class="producto">
-    <img src="tor2.jpg" alt="Tortilla Azul" />
-    <p>Tortilla de Maíz Azul Nixtamalizado (500gr)</p>
-  </a>
-<a href="productos/tortilla-harina.html" class="producto">
-    <img src="tor3.jpg" alt="Tortilla Harina" />
-    <p>Tortillas de Harina de Maíz (500gr)</p>
-  </a>
-  <a href="productos/masa-bolsa.html" class="producto">
-    <img src="mas1.png" alt="Masa Nixtamal Bolsa" />
-    <p>Masa de Maíz Nixtamalizado Bolsa (1Kg)</p>
-  </a>
 
-  <a href="productos/masa-azul.html" class="producto">
-    <img src="mas2.jpg" alt="Masa Azul" />
-    <p>Masa de Maíz Azul Nixtamalizado (1Kg)</p>
-  </a>
+      <!-- Producto ejemplo (copia este bloque para los demás productos) -->
+      <div class="producto">
+        <img src="tor1.jpg" alt="Tortilla Maíz Nixtamalizado" />
+        <p>Tortilla de Maíz Nixtamalizado (500gr)</p>
+        <div class="cantidad-selector">
+          <button onclick="cambiarCantidad(this, -1)">−</button>
+          <span class="cantidad">1</span>
+          <button onclick="cambiarCantidad(this, 1)">+</button>
+        </div>
+        <button class="agregar-btn" onclick="agregarAlCarrito(this)">Agregar al carrito</button>
+      </div>
 
-  <a href="productos/masa-harina.html" class="producto">
-    <img src="mas3.jpg" alt="Masa Harina" />
-    <p>Masa de Harina de Maíz (1Kg)</p>
-  </a>
-  
-    <a href="productos/masa-bolsa.html" class="producto">
-    <img src="totop1.jpg" alt="Totopos de Masa Nixtamal" />
-    <p>Masa de Maíz Nixtamalizado Bolsa (1Kg)</p>
-  </a>
+      <div class="producto">
+        <img src="tor2.jpg" alt="Tortilla Azul" />
+        <p>Tortilla de Maíz Azul Nixtamalizado (500gr)</p>
+        <div class="cantidad-selector">
+          <button onclick="cambiarCantidad(this, -1)">−</button>
+          <span class="cantidad">1</span>
+          <button onclick="cambiarCantidad(this, 1)">+</button>
+        </div>
+        <button class="agregar-btn" onclick="agregarAlCarrito(this)">Agregar al carrito</button>
+      </div>
 
-  <a href="productos/masa-azul.html" class="producto">
-    <img src="totop2.jpg" alt="Totopos de Masa Azul" />
-    <p>Masa de Maíz Azul Nixtamalizado (1Kg)</p>
-  </a>
+      <div class="producto">
+        <img src="tor3.jpg" alt="Tortilla de Harina" />
+        <p>Tortilla de Maíz de Harina (500gr)</p>
+        <div class="cantidad-selector">
+          <button onclick="cambiarCantidad(this, -1)">−</button>
+          <span class="cantidad">1</span>
+          <button onclick="cambiarCantidad(this, 1)">+</button>
+        </div>
+        <button class="agregar-btn" onclick="agregarAlCarrito(this)">Agregar al carrito</button>
+      </div>
 
-  <a href="productos/masa-harina.html" class="producto">
-    <img src="toptop3.jpg" alt="Totopos de Masa Harina" />
-    <p>Masa de Harina de Maíz (1Kg)</p>
-  </a>
-</div>
+      <div class="producto">
+        <img src="mas1.png" alt="Masa Maíz Nixtamalizado" />
+        <p>Masa Maíz Nixtamalizado (500gr)</p>
+        <div class="cantidad-selector">
+          <button onclick="cambiarCantidad(this, -1)">−</button>
+          <span class="cantidad">1</span>
+          <button onclick="cambiarCantidad(this, 1)">+</button>
+        </div>
+        <button class="agregar-btn" onclick="agregarAlCarrito(this)">Agregar al carrito</button>
+      </div>
 
+      <div class="producto">
+        <img src="mas2.jpg" alt="Masa Maíz Azul" />
+        <p>Masa Maíz Azul (500gr)</p>
+        <div class="cantidad-selector">
+          <button onclick="cambiarCantidad(this, -1)">−</button>
+          <span class="cantidad">1</span>
+          <button onclick="cambiarCantidad(this, 1)">+</button>
+        </div>
+        <button class="agregar-btn" onclick="agregarAlCarrito(this)">Agregar al carrito</button>
+      </div>
+
+      <div class="producto">
+        <img src="mas3.jpg" alt="Masa de Harina" />
+        <p>Masa Maíz Azul (500gr)</p>
+        <div class="cantidad-selector">
+          <button onclick="cambiarCantidad(this, -1)">−</button>
+          <span class="cantidad">1</span>
+          <button onclick="cambiarCantidad(this, 1)">+</button>
+        </div>
+        <button class="agregar-btn" onclick="agregarAlCarrito(this)">Agregar al carrito</button>
+      </div>
+
+      <div class="producto">
+        <img src="totop1.jpg" alt="Totopo maiz Nixtamalizado" />
+        <p>Totopo de Maíz Nixtamalizado (500gr)</p>
+        <div class="cantidad-selector">
+          <button onclick="cambiarCantidad(this, -1)">−</button>
+          <span class="cantidad">1</span>
+          <button onclick="cambiarCantidad(this, 1)">+</button>
+        </div>
+        <button class="agregar-btn" onclick="agregarAlCarrito(this)">Agregar al carrito</button>
+      </div>
+
+      <div class="producto">
+        <img src="totop2.jpg" alt="Totopo Azul" />
+        <p>Totopo Maíz Azul(500gr)</p>
+        <div class="cantidad-selector">
+          <button onclick="cambiarCantidad(this, -1)">−</button>
+          <span class="cantidad">1</span>
+          <button onclick="cambiarCantidad(this, 1)">+</button>
+        </div>
+        <button class="agregar-btn" onclick="agregarAlCarrito(this)">Agregar al carrito</button>
+      </div>
+
+      <div class="producto">
+        <img src="toptop3.jpg" alt="Totopo Harina" />
+        <p>Totopo Harina (500gr)</p>
+        <div class="cantidad-selector">
+          <button onclick="cambiarCantidad(this, -1)">−</button>
+          <span class="cantidad">1</span>
+          <button onclick="cambiarCantidad(this, 1)">+</button>
+        </div>
+        <button class="agregar-btn" onclick="agregarAlCarrito(this)">Agregar al carrito</button>
+      </div>
+      <!-- Repite este bloque para los demás productos... -->
+
+    </div>
   </main>
+
+  <script>
+    function cambiarCantidad(boton, delta) {
+      const cantidadSpan = boton.parentElement.querySelector('.cantidad');
+      let cantidad = parseInt(cantidadSpan.textContent);
+      cantidad = Math.max(1, cantidad + delta);
+      cantidadSpan.textContent = cantidad;
+    }
+
+    function agregarAlCarrito(boton) {
+      const producto = boton.parentElement;
+      const nombre = producto.querySelector('p').textContent;
+      const cantidad = producto.querySelector('.cantidad').textContent;
+      alert(`Agregaste ${cantidad} unidad(es) de "${nombre}" al carrito.`);
+    }
+  </script>
 
 </body>
 </html>

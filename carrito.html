@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tortillas de Maíz</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff1d4;
+    }
+
+    /* Header */
+    header {
+      background-color: hsl(174, 80%, 32%);
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.8em;
+      font-weight: bold;
+    }
+
+    .logo-img {
+      height: 40px;
+      width: 40px;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Estilos del modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      position: relative;
+    }
+
+    .comprar-btn {
+      background-color: hsl(174, 80%, 32%);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .comprar-btn:hover {
+      background-color: hsl(174, 70%, 27%);
+    }
+
+    .cerrar {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+
+    .producto {
+      display: flex;
+      align-items: center;
+      margin: 20px;
+    }
+
+    .producto img {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      margin-right: 15px;
+    }
+
+    .cantidad-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cantidad-control button {
+      background-color: #ddd;
+      border: none;
+      padding: 5px 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .cantidad {
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="logo2.png" alt="Logo" class="logo-img">
+      <span>Tortillería La Tradición</span>
+    </div>
+    <nav>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="nuestrosproductos.html">Nuestros Productos</a>
+      <a href="login.html">Registro</a>
+      <a href="#" onclick="mostrarCarrito()">Carrito</a>
+    </nav>
+  </header>
+
+  <!-- PRODUCTO DE EJEMPLO -->
+  <div class="producto">
+    <img src="tor1.jpg" alt="Tortilla de maíz">
+    <div>
+      <p>Tortilla de maíz 1kg</p>
+      <div class="cantidad-control">
+        <button onclick="cambiarCantidad(this, -1)">-</button>
+        <span class="cantidad">1</span>
+        <button onclick="cambiarCantidad(this, 1)">+</button>
+        <button onclick="agregarAlCarrito(this)" class="comprar-btn">Agregar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL CARRITO -->
+  <div id="carritoModal" class="modal">
+    <div class="modal-content">
+      <span class="cerrar" onclick="cerrarCarrito()">&times;</span>
+      <h2>Carrito de Compras</h2>
+      <div id="carritoItems"></div>
+      <p><strong>Total: $<span id="total">0</span> MXN</strong></p>
+      <button onclick="mostrarDireccion()" class="comprar-btn">Comprar</button>
+    </div>
+  </div>
+
+  <!-- MODAL DIRECCIÓN -->
+  <div id="direccionModal" class="modal">
+    <div class="modal-content">
+      <span class="cerrar" onclick="cerrarDireccion()">&times;</span>
+      <h2>Ingrese su dirección</h2>
+      <input type="text" id="direccionInput" placeholder="Calle, ciudad, etc." style="width:100%; padding:8px;" />
+      <button onclick="confirmarCompra()" class="comprar-btn">Confirmar compra</button>
+    </div>
+  </div>
+
+  <!-- MODAL MENSAJE -->
+  <div id="mensajeCompra" class="modal">
+    <div class="modal-content">
+      <h2>✅ ¡Compra exitosa!</h2>
+      <p>Gracias por tu compra. Recibirás tu pedido pronto.</p>
+      <button onclick="cerrarMensaje()" class="comprar-btn">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    let carrito = [];
+
+    function cambiarCantidad(btn, delta) {
+      const span = btn.parentElement.querySelector(".cantidad");
+      let cantidad = parseInt(span.textContent);
+      cantidad = Math.max(1, cantidad + delta);
+      span.textContent = cantidad;
+    }
+
+    function agregarAlCarrito(btn) {
+      const producto = btn.closest(".producto");
+      const nombre = producto.querySelector("p").textContent;
+      const imagen = producto.querySelector("img").src;
+      const cantidad = parseInt(producto.querySelector(".cantidad").textContent);
+
+      const existente = carrito.find(p => p.nombre === nombre);
+      if (existente) {
+        existente.cantidad += cantidad;
+      } else {
+        carrito.push({ nombre, imagen, cantidad });
+      }
+
+      mostrarCarrito();
+    }
+
+    function mostrarCarrito() {
+      const modal = document.getElementById("carritoModal");
+      const items = document.getElementById("carritoItems");
+      const total = document.getElementById("total");
+
+      items.innerHTML = "";
+      let totalPrecio = 0;
+
+      carrito.forEach((item, index) => {
+        totalPrecio += item.cantidad * 20; // Precio fijo para ejemplo
+        items.innerHTML += `
+          <div style="display:flex;align-items:center;margin-bottom:10px;">
+            <img src="${item.imagen}" alt="" style="width:50px;height:50px;border-radius:5px;margin-right:10px;">
+            <div style="flex-grow:1;text-align:left;">
+              <p style="margin:0;">${item.nombre}</p>
+              <small>Cantidad: ${item.cantidad}</small>
+            </div>
+            <button onclick="eliminarDelCarrito(${index})" style="margin-left:10px;">🗑️</button>
+          </div>`;
+      });
+
+      total.textContent = totalPrecio.toFixed(2);
+      modal.style.display = "flex";
+    }
+
+    function eliminarDelCarrito(index) {
+      carrito.splice(index, 1);
+      mostrarCarrito();
+    }
+
+    function cerrarCarrito() {
+      document.getElementById("carritoModal").style.display = "none";
+    }
+
+    function mostrarDireccion() {
+      document.getElementById("carritoModal").style.display = "none";
+      document.getElementById("direccionModal").style.display = "flex";
+    }
+
+    function cerrarDireccion() {
+      document.getElementById("direccionModal").style.display = "none";
+    }
+
+    function confirmarCompra() {
+      const direccion = document.getElementById("direccionInput").value;
+      if (direccion.trim() === "") {
+        alert("Por favor ingresa una dirección.");
+        return;
+      }
+
+      document.getElementById("direccionModal").style.display = "none";
+      document.getElementById("mensajeCompra").style.display = "flex";
+      carrito = [];
+    }
+
+    function cerrarMensaje() {
+      document.getElementById("mensajeCompra").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
